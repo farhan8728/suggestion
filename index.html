@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Auto complete using Pure Javascript</title>
+</head>
+<body>
+<script type="text/javascript">
+    var tags = [
+    "Pizza",
+    "Burger",
+    "ChessBox",
+    "Birayani",
+    "hydarabad birayani",
+    "Coke",
+    "sevenup",
+    
+      ];
+ 
+      /*list of available options*/
+     var n= tags.length; //length of datalist tags   
+ 
+     function ac(value) {
+        document.getElementById('datalist').innerHTML = '';
+         //setting datalist empty at the start of function
+         //if we skip this step, same name will be repeated
+          
+         l=value.length;
+         //input query length
+     for (var i = 0; i<n; i++) {
+         if(((tags[i].toLowerCase()).indexOf(value.toLowerCase()))>-1)
+         {
+             //comparing if input string is existing in tags[i] string
+ 
+             var node = document.createElement("option");
+             var val = document.createTextNode(tags[i]);
+              node.appendChild(val);
+ 
+               document.getElementById("datalist").appendChild(node);
+                   //creating and appending new elements in data list
+             }
+         }
+     }
+  
+</script>
+ 
+<input type="text" list="datalist" onkeyup="ac(this.value)">
+<!-- On keyup calls the function everytime a key is released -->
+<datalist id="datalist">
+ 
+        <!-- <option value="Pizza"></option>
+        <option value="Burger"></option>
+        <option value="ChessBox"></option>
+        <option value="Birayani"></option>
+        <option value="Hydarabad birayani"></option>
+        <option value="Karnataka"></option>
+        <option value="Kerala"></option>
+        <option value="Maharashtra"></option>
+        <option value="Gujrat"></option>
+        <option value="Rajasthan"></option>
+        <option value="Bihar"></option>
+        <option value="Tamil Nadu"></option>
+        <option value="Haryana"></option> -->
+ 
+<!-- This data list will be edited through javascript     -->
+</datalist>
+</body>
+</html>
